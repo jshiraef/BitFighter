@@ -7,11 +7,14 @@ public class bettyController : MonoBehaviour {
 	
 	public Direction direction;
 	
-	public Animator anim;
+	public Animator bettyAnim;
+
+	bool isBetty = false;
 	
 	// Use this for initialization
-	void Start () {
-		anim = GetComponent<Animator>();
+	void Start ()
+	 {
+		bettyAnim = GetComponent<Animator>();
 		this.direction = Direction.EAST;
 	}
 	
@@ -23,30 +26,94 @@ public class bettyController : MonoBehaviour {
 	
 	void Movement()
 	{
+		if(Input.GetKey (KeyCode.I))
+		{
+			transform.Translate(Vector2.up * 6f * Time.deltaTime);
+		}
+
 		if(Input.GetKey (KeyCode.J))
 		{
-			transform.Translate(Vector2.right * 4f * Time.deltaTime);
+			transform.Translate(-Vector2.right * 4f * Time.deltaTime);
 			this.direction = Direction.EAST;
-			anim.Play ("BettyWalkRight");
+
+			if(isBetty)
+			{
+				bettyAnim.Play ("BettyWalkLeft");
+			}
+			else 
+			{
+				bettyAnim.Play ("BruceWalkLeft");
+			}
 		}
 		
 		else if(Input.GetKey (KeyCode.L))
 		{
-			transform.eulerAngles = new Vector2(0, 180);
-			transform.Translate (-Vector2.right * 4f * Time.deltaTime);
+//			transform.eulerAngles = new Vector2(0, 180);
+			transform.Translate (Vector2.right * 4f * Time.deltaTime);
 			this.direction = Direction.WEST;
-			anim.Play ("BettyWalkRight");
-		}
-		
-		else 
-		{
-			if(this.direction == Direction.EAST)
+
+			if(isBetty)
 			{
-				anim.Play("BettyIdleRight");
+				bettyAnim.Play ("BettyWalkRight");
+			}	
+			else 
+			{
+				bettyAnim.Play ("BruceWalkRight");
 			}
-			else anim.Play ("BettyIdleLeft");
-		}	
-		
+		}
+
+			else if(Input.GetKeyDown (KeyCode.H))
+			{
+				if(isBetty)
+				{
+					if(this.direction == Direction.EAST)
+					{
+						bettyAnim.Play ("BettyPunchRight");
+						
+					}
+					else 
+					{
+						bettyAnim.Play ("BettyPunchLeft");
+					}
+					//				BoxCollider2D collider = GetComponent<BoxCollider2D>();
+					//				collider.size = 1;
+				}
+				else
+				{
+					if(this.direction == Direction.EAST)
+					{
+						bettyAnim.Play ("BrucePunchRight");
+					}
+					else {
+						bettyAnim.Play ("BrucePunchLeft");
+					}
+				}
+			}
+			
+			else if(Input.GetKeyDown(KeyCode.U))
+			{
+				if(isBetty)
+				{
+					if(this.direction == Direction.EAST)
+					{
+						bettyAnim.Play ("BettyKickRight");
+					}
+					else 
+					{
+						bettyAnim.Play ("BettyKickLeft");
+					}
+				}
+				else
+				{	
+					if(this.direction == Direction.EAST)
+					{
+						bettyAnim.Play ("BruceKickRight");
+					}
+					else {
+						bettyAnim.Play ("BruceKickLeft");
+					}
+				}
+			}
 	}
 	
 	public enum Direction
