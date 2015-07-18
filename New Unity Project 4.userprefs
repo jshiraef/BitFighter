@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\bettyController.cs">
+    <Files>
+      <File FileName="Assets\Background Repeater.cs" Line="16" Column="1" />
+      <File FileName="Assets\PlayerControl.cs" Line="51" Column="2" />
+      <File FileName="Assets\bettyController.cs" Line="28" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
