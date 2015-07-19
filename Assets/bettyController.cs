@@ -28,13 +28,13 @@ public class bettyController : MonoBehaviour {
 	{
 		if(Input.GetKey (KeyCode.I))
 		{
-			transform.Translate(Vector2.up * 6f * Time.deltaTime);
+			transform.Translate(Vector2.up * 3f * Time.deltaTime);
 		}
 
 		if(Input.GetKey (KeyCode.J))
 		{
 			transform.Translate(-Vector2.right * 4f * Time.deltaTime);
-			this.direction = Direction.EAST;
+			this.direction = Direction.WEST;
 
 			if(isBetty)
 			{
@@ -50,7 +50,7 @@ public class bettyController : MonoBehaviour {
 		{
 //			transform.eulerAngles = new Vector2(0, 180);
 			transform.Translate (Vector2.right * 4f * Time.deltaTime);
-			this.direction = Direction.WEST;
+			this.direction = Direction.EAST;
 
 			if(isBetty)
 			{

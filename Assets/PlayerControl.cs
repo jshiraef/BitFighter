@@ -10,6 +10,8 @@ public class PlayerControl : MonoBehaviour {
 	public Animator anim;
 
 	bool isJones = true;
+	bool loser = false;
+	bool hit;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,11 @@ public class PlayerControl : MonoBehaviour {
 	void Update () 
 	{
 		Movement ();
+
+		if(transform.position.y <  -10)
+		{
+			loser = true;
+		}
 	}
 
 	void Movement()
@@ -28,7 +35,7 @@ public class PlayerControl : MonoBehaviour {
 
 		if(Input.GetKey (KeyCode.W))
 		{
-			transform.Translate(Vector2.up * 6f * Time.deltaTime);
+			transform.Translate(Vector2.up * 4f * Time.deltaTime);
 		}
 
 		if(Input.GetKey (KeyCode.D))
@@ -70,7 +77,6 @@ public class PlayerControl : MonoBehaviour {
 				if(this.direction == Direction.EAST)
 				{
 					anim.Play ("PunchRight");
-					
 				}
 				else 
 					{
@@ -117,9 +123,16 @@ public class PlayerControl : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision collision)
+	void OnCollisionEnter2D(Collision2D coll)
 	{
-		print ("this happened");
+		if (coll.gameObject.tag == "Fighter") 
+		{
+			Debug.Log ("You hit something");
+//			Destroy (coll.gameObject);
+//			Destroy (this.gameObject);
+			
+			hit = true;
+		}
 	}
 	
 	public enum Direction
